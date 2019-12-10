@@ -10,9 +10,10 @@ public class Person {
 	private Date birthdate;
 	private String address;
 	private String email;
+	private String contactnumber;
 
 	
-	public Person(String firstname, String middlename, String lastname, Date birthdate, String address, String email) {
+	public Person(String firstname, String middlename, String lastname, Date birthdate, String address, String email, String contactnumber) {
 		
 		this.firstname = firstname;
 		this.middlename = middlename;
@@ -20,9 +21,26 @@ public class Person {
 		this.birthdate = birthdate;
 		this.address = address;
 		this.email = email;
+		this.contactnumber = contactnumber;
 	}
 	
 	
+	
+	
+	public String getContactnumber() {
+		return contactnumber;
+	}
+
+
+
+
+	public void setContactnumber(String contactnumber) {
+		this.contactnumber = contactnumber;
+	}
+
+
+
+
 	public String getAddress() {
 		return address;
 	}

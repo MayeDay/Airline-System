@@ -20,9 +20,9 @@ public class MainController {
 		return mainController;
 	}
 	
-	public boolean AdminAuthentication(String username, String password) {
+	public boolean employeeAuthentication(String username, String password) {
 		
-		return database.AdminAuthentication(username, password);
+		return database.employeeAuthentication(username, password);
 	}
 	
 	public Employee getEmployee() {
