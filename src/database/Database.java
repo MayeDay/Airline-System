@@ -39,7 +39,7 @@ public class Database {
 	
 	private void initDatabase() {
 		
-		url = "jdbc:mysql://localhost/airport-registration-and-monitering-system";
+		url = "jdbc:mysql://localhost/airport-registration-and-monitoring-system";
 		username = "root";
 		password = "J@m3sM@y36094";		
 		

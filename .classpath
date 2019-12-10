@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="LIB/jcalendar-1.4.zip"/>
 	<classpathentry kind="lib" path="LIB/jcalendar-1.4.rar"/>
 	<classpathentry kind="lib" path="LIB/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="LIB/mysql-connector-java-8.0.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -30,6 +30,18 @@ foreign key(userstatus_id)references userstatus_table(userstatus_id),
 foreign key(airline_id)references airline_table(airline_id)
 );
 
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Jeffery', 'Sumner', 1, 1);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Carly', 'River', 1, 2);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Lincoln', 'Manchester', 1, 3);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Timmy', 'Turner', 1, 4);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Danny', 'Phantom', 1, 5);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Jimmy', 'Neutron', 1, 6);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Barry', 'Barnes', 1, 7);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Bruce', 'Wayne', 1, 8);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Mario', 'Espinoza', 1, 9);
+insert into merchant_table(firstname, lastname, userstatus_id, airline_id)values('Anthony', 'Williams', 1, 10);
+
+
 create table airplane_table(
 
 airplane_id int auto_increment,
@@ -241,12 +253,14 @@ delimiter ;
 delimiter \\
 create procedure getClients()
 begin
-select client_table.lastname, client_table.firstname, client_table.middlename, gender_table.gender, client_table.birthdate, client_table.contact_number, client_table.address, client_table.email, airplane_table.airplane_name,  airplane_table.depart_time, airplane_table.arrival_time, airplane_table.departure_date, airplane_table.gate, airplane_table.terminal, loc.location_name as location, loc_city.city_name as location_city, des.location_name as destination, des_city.city_name as destination_city
+select client_table.lastname, client_table.firstname, client_table.middlename, gender_table.gender, client_table.birthdate, client_table.contact_number, client_table.address, client_table.email, airline_table.airline_name,airplane_table.airplane_id, airplane_table.airplane_name,  airplane_table.depart_time, airplane_table.arrival_time, airplane_table.departure_date, airplane_table.gate, airplane_table.terminal, loc.location_name as location, loc_city.city_name as location_city, des.location_name as destination, des_city.city_name as destination_city, client_table.client_id
 from client_table
 join gender_table
 on client_table.gender_id = gender_table.gender_id
 join airplane_table
 on airplane_table.airplane_id = client_table.airplane_id
+join airline_table
+on airplane_table.airline_id = airline_table.airline_id
 join all_location_table loc
 on loc.location_id = airplane_table.location_id
 left join all_location_table loc_city
@@ -279,10 +293,24 @@ on des_city.location_id = airplane_table.destination_id
 end \\
 delimiter ;
 
+delimiter \\
+create procedure getMerchants()
+select merchant_table.merchant_id, merchant_table.firstname, merchant_table.lastname, userstatus_table.stats, airline_table.airline_name
+from merchant_table
+join userstatus_table
+on merchant_table.userstatus_id = userstatus_table.userstatus_id
+join airline_table
+on merchant_table.airline_id = airline_table.airline_id;
+end \\
+delimiter ;
 
 call employeeList();
 call getClients();
 call getPlaneList();
+call getMerchants();
+call employeeLogin();
 select * from airplane_table;
 select * from all_location_table;
 select * from flight_status_table;
+select * from userstatus_table;
+select * from merchant_table;
