@@ -17,7 +17,9 @@ import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import controller.MainController;
 public class UpdateFlight extends JFrame {
 
 	private JPanel contentPane;
@@ -25,6 +27,7 @@ public class UpdateFlight extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private MainController maincontroller;
 
 	/**
 	 * Launch the application.
@@ -35,15 +38,18 @@ public class UpdateFlight extends JFrame {
 	 * Create the frame.
 	 */
 	public UpdateFlight() {
+		maincontroller = MainController.getMainController();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 720, 532);
+		setBounds(100, 100, 731, 532);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 0, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Update Client Flight");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		lblNewLabel.setBounds(22, 11, 185, 24);
 		contentPane.add(lblNewLabel);
@@ -126,6 +132,18 @@ public class UpdateFlight extends JFrame {
 		
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setBounds(283, 276, 89, 23);
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Integer input = Integer.valueOf(textField.getText());
+				for(int i = 0; i < maincontroller.getClientList().size(); i++) {
+					int id = maincontroller.getClientList().get(i).getId();
+					if(id == input) {
+						
+					}
+					
+				}
+			}
+		});
 		contentPane.add(btnSearch);
 		
 		JButton button = new JButton("Back to Menu");
@@ -137,7 +155,12 @@ public class UpdateFlight extends JFrame {
 				dispose();
 			}
 		});
-		button.setBounds(480, 15, 119, 35);
+		button.setBounds(581, 13, 109, 31);
 		contentPane.add(button);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\James Maye\\Downloads\\Airplane Aircraft Wallpaper 19114 Wallpaper High Resolution.png"));
+		lblNewLabel_2.setBounds(12, 48, 689, 437);
+		contentPane.add(lblNewLabel_2);
 	}
 }

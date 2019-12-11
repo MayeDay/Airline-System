@@ -42,19 +42,20 @@ public class ViewFlightInfo extends JFrame {
 		maincontroller = MainController.getMainController();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 762, 703);
+		setBounds(100, 100, 794, 385);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 0, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Flight Information");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 15));
-		lblNewLabel.setBounds(10, 34, 161, 29);
+		lblNewLabel.setBounds(10, 13, 161, 29);
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 76, 730, 210);
+		scrollPane.setBounds(20, 80, 730, 210);
 		contentPane.add(scrollPane);
 		
 		String data[][] = new String [maincontroller.getAirplaneList().size()][8];
@@ -108,32 +109,26 @@ public class ViewFlightInfo extends JFrame {
 				dispose();
 			}
 		});
-		button.setBounds(544, 28, 143, 35);
+		button.setBounds(584, 11, 143, 35);
 		contentPane.add(button);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.controlHighlight);
-		panel.setBounds(10, 333, 730, 172);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
 		JLabel lblNewLabel_1 = new JLabel("Seach Flight ID:");
-		lblNewLabel_1.setBounds(10, 303, 113, 19);
+		lblNewLabel_1.setBounds(30, 303, 113, 19);
 		contentPane.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		
 		textField = new JTextField();
-		textField.setBounds(119, 302, 130, 20);
+		textField.setBounds(139, 303, 130, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search ");
-		btnSearch.setBounds(261, 302, 130, 23);
+		btnSearch.setBounds(281, 302, 130, 23);
 		contentPane.add(btnSearch);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\James Maye\\Downloads\\Airplane Aircraft Wallpaper 19114 Wallpaper High Resolution.png"));
-		lblNewLabel_2.setBounds(0, 0, 744, 643);
+		lblNewLabel_2.setBounds(10, 60, 754, 278);
 		contentPane.add(lblNewLabel_2);
 	}
 }

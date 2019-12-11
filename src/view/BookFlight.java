@@ -59,7 +59,6 @@ public class BookFlight extends JFrame {
 	BookFlight() {
 		
 		maincontroller = MainController.getMainController();
-		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\James Maye\\Downloads\\maa.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 760, 474);
@@ -162,12 +161,12 @@ public class BookFlight extends JFrame {
 		comboBox_3.setBounds(10, 236, 96, 22);
 		Returning.add(comboBox_3);
 		
-		JButton btnBook = new JButton("Book Now");
+		JButton btnBook = new JButton("Search");
 		btnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBook.setBounds(185, 223, 119, 35);
+		btnBook.setBounds(155, 230, 119, 35);
 		Returning.add(btnBook);
 		
 		JComboBox<String> cboReturning = new JComboBox<String>();
@@ -577,5 +576,7 @@ public class BookFlight extends JFrame {
 			
 		});
 		contentPane.add(passwordField);
+		setLocationRelativeTo(null);
 	}
+	
 }
