@@ -15,36 +15,26 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import javax.swing.JPasswordField;
 
 public class CancelFlight extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CancelFlight frame = new CancelFlight();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
 	public CancelFlight() {
+		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 923, 551);
+		setBounds(100, 100, 927, 460);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -55,9 +45,14 @@ public class CancelFlight extends JFrame {
 		lblNewLabel.setBounds(20, 24, 112, 21);
 		contentPane.add(lblNewLabel);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(12, 73, 889, 333);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(23, 96, 862, 192);
-		contentPane.add(scrollPane);
+		scrollPane.setBounds(12, 13, 862, 192);
+		panel.add(scrollPane);
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
@@ -70,42 +65,17 @@ public class CancelFlight extends JFrame {
 		));
 		scrollPane.setViewportView(table);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(20, 305, 865, 196);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Cancel", "Delayed", "Arrived", "Landed", "Redirected", "Scheduled"}));
+		comboBox.setBounds(87, 248, 108, 22);
+		panel.add(comboBox);
 		
-		JLabel lblNewLabel_2 = new JLabel("Flight #:");
-		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblNewLabel_2.setBounds(10, 24, 65, 14);
-		panel.add(lblNewLabel_2);
+		JLabel lblNewLabel_1 = new JLabel("Status");
+		lblNewLabel_1.setBounds(12, 251, 56, 16);
+		panel.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(62, 22, 96, 20);
-		panel.add(textField);
-		textField.setColumns(10);
-		
-		JLabel label = new JLabel("Flight #:");
-		label.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		label.setBounds(10, 61, 65, 14);
-		panel.add(label);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(62, 59, 96, 20);
-		panel.add(textField_1);
-		
-		JButton button = new JButton("Back to Menu");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				Admin admin = new Admin();
-				admin.setVisible(true);
-				admin.setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		button.setBounds(763, 26, 119, 35);
-		contentPane.add(button);
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBounds(12, 13, 889, 393);
+		contentPane.add(lblNewLabel_2);
 	}
 }

@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Admin extends JFrame {
 
@@ -39,66 +40,55 @@ public class Admin extends JFrame {
 	 */
 	public Admin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 663, 412);
+		setBounds(100, 100, 662, 413);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Admin");
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 153));
+		panel.setBounds(0, 0, 644, 366);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JButton btnViewBookPassengers = new JButton("Book Passenger");
+		btnViewBookPassengers.setBounds(27, 295, 123, 37);
+		panel.add(btnViewBookPassengers);
+		btnViewBookPassengers.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JButton btnNewButton = new JButton("Update Flight");
+		btnNewButton.setBounds(27, 90, 121, 37);
+		panel.add(btnNewButton);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JButton btnCancelFlight = new JButton("Cancel Flight");
+		btnCancelFlight.setBounds(27, 140, 121, 37);
+		panel.add(btnCancelFlight);
+		btnCancelFlight.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel = new JLabel("Administrator HomePage");
+		lblNewLabel.setBounds(27, 51, 257, 26);
+		panel.add(lblNewLabel);
 		lblNewLabel.setForeground(SystemColor.textHighlightText);
 		lblNewLabel.setBackground(SystemColor.window);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(25, 27, 205, 26);
-		contentPane.add(lblNewLabel);
-		
-		JButton btnNewButton = new JButton("Update Flight");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				UpdateFlight update = new UpdateFlight();
-				update.setVisible(true);
-				update.setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		btnNewButton.setBounds(25, 76, 121, 37);
-		contentPane.add(btnNewButton);
-		
-		JButton btnCancelFlight = new JButton("Cancel Flight");
-		btnCancelFlight.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCancelFlight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				CancelFlight cancel = new CancelFlight();
-				cancel.setLocationRelativeTo(null);
-				cancel.setVisible(true);
-				cancel.setResizable(false);
-				dispose();
-			}
-		});
-		btnCancelFlight.setBounds(25, 135, 121, 37);
-		contentPane.add(btnCancelFlight);
 		
 		JButton btnBookFlight = new JButton("Book Flight");
+		btnBookFlight.setBounds(27, 192, 121, 37);
+		panel.add(btnBookFlight);
 		btnBookFlight.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnBookFlight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				BookFlight Flight = new BookFlight();
-				Flight.setVisible(true);
-				Flight.setResizable(false);
-				Flight.setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		btnBookFlight.setBounds(25, 193, 121, 37);
-		contentPane.add(btnBookFlight);
 		
 		JButton btnView = new JButton("View Flight Info");
+		btnView.setBounds(26, 245, 121, 37);
+		panel.add(btnView);
 		btnView.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(12, 43, 620, 323);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\James Maye\\Downloads\\Airplane Aircraft Wallpaper 19114 Wallpaper High Resolution.png"));
 		btnView.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewFlightInfo vfi = new ViewFlightInfo();
@@ -109,17 +99,34 @@ public class Admin extends JFrame {
 				
 			}
 		});
-		btnView.setBounds(25, 251, 121, 37);
-		contentPane.add(btnView);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Louie\\Downloads\\home.jpg"));
-		lblNewLabel_1.setBounds(179, 38, 458, 303);
-		contentPane.add(lblNewLabel_1);
-		
-		JButton btnViewBookPassengers = new JButton("Booked Passengers");
-		btnViewBookPassengers.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnViewBookPassengers.setBounds(25, 304, 121, 37);
-		contentPane.add(btnViewBookPassengers);
+		btnBookFlight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				BookFlight Flight = new BookFlight();
+				Flight.setVisible(true);
+				Flight.setResizable(false);
+				Flight.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		btnCancelFlight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				CancelFlight cancel = new CancelFlight();
+				cancel.setLocationRelativeTo(null);
+				cancel.setVisible(true);
+				cancel.setResizable(false);
+				dispose();
+			}
+		});
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				UpdateFlight update = new UpdateFlight();
+				update.setVisible(true);
+				update.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
 	}
 }

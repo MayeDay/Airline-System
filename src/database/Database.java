@@ -1,16 +1,20 @@
 package database;
 import java.util.*;
+import controller.MainController;
 import java.sql.*;
 import model.*;
-public class Database {
+public class Database implements Runnable{
 
 	private LinkedList<Client>clientList;
 	private LinkedList<Employee>employeeList;
 	private LinkedList<Airplane> planeList;
 	private LinkedList<Merchant> merchantList;
+	private LinkedList<Location> locationList;
 	private static Database database = null;
 	private Employee employee = null;
 	private Client client = null;
+	private Thread t;
+	private MainController maincontroller;
 
 	private Connection connection = null;
 	private CallableStatement cs = null;
@@ -18,6 +22,8 @@ public class Database {
 	private String url;
 	private String username;
 	private String password;
+	private long time;
+	private boolean active = true;
 	
 	
 	private Database() {
@@ -26,7 +32,12 @@ public class Database {
 		employeeList = new LinkedList<Employee>();
 		planeList = new LinkedList<Airplane>();
 		merchantList = new LinkedList<Merchant>();
+		locationList = new LinkedList<Location>();
 		initDatabase();
+		
+		//t = new Thread(this);
+		//if(active)
+		//	t.run();
 	}
 	
 	public static Database getDatabase() {
@@ -98,8 +109,18 @@ public class Database {
 			while(rs.next()) {
 				
 				merchantList.add(new Merchant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+				
 			}
-
+			
+			cs = connection.prepareCall("{call getLocation()}");
+			
+			rs = cs.executeQuery();
+			
+			while(rs.next()) {
+				
+				locationList.add(new Location(rs.getString(1), rs.getString(2), rs.getString(3)));
+				
+			}
 				
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -121,6 +142,36 @@ public class Database {
 	
 	public Employee getEmployee() {	
 		return this.employee;
+	}
+	
+	public LinkedList<Client> getClientList(){
+		return this.clientList;
+	}
+	public LinkedList<Employee> getEmployeeList(){
+		return this.employeeList;
+	}
+	public LinkedList<Airplane> getAirplaneList(){
+		return this.planeList;
+	}
+	public LinkedList<Location> getLocationList(){
+		return this.locationList;
+	}
+	
+	public Client getClient(int clientId) {
+		for(Client c: clientList) 
+			if(c.getId() == clientId) 
+				this.client = c;
+		return this.client;
+	}
+
+	public void run() {
+		
+		while(active) {
+			
+			time = System.currentTimeMillis();
+			Time tim = new Time(time);
+		}
+		
 	}
 	
 }

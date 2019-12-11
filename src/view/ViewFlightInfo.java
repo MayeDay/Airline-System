@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,43 +9,40 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import controller.MainController;
 
 public class ViewFlightInfo extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tblFlights;
 	private JTextField textField;
+	private MainController maincontroller;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewFlightInfo frame = new ViewFlightInfo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public ViewFlightInfo() {
+		maincontroller = MainController.getMainController();
+		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 732, 555);
+		setBounds(100, 100, 762, 703);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -52,24 +50,51 @@ public class ViewFlightInfo extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Flight Information");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 15));
-		lblNewLabel.setBounds(10, 33, 135, 20);
+		lblNewLabel.setBounds(10, 34, 161, 29);
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 77, 677, 210);
+		scrollPane.setBounds(10, 76, 730, 210);
 		contentPane.add(scrollPane);
 		
-		tblFlights = new JTable();
-		tblFlights.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, "", null, null, null},
-			},
-			new String[] {
-				"FlightID", "Flight #", "Airplane", "Origin", "Destination", "Departure Date", "Returning Date", "Passengers"
+		String data[][] = new String [maincontroller.getAirplaneList().size()][8];
+		
+		for(int i = 0; i < maincontroller.getAirplaneList().size(); i++) {
+			for(int j = 0; j < 8; j++) {
+				
+			if(j == 0) {
+				data[i][j]= String.valueOf(maincontroller.getAirplaneList().get(i).getAirline());
+			}else if(j == 1) {
+				data[i][j]= maincontroller.getAirplaneList().get(i).getTerminal();
+			}else if(j == 2) {
+				data[i][j]= maincontroller.getAirplaneList().get(i).getGate();
+			}else if(j == 3) {
+				data[i][j]= maincontroller.getAirplaneList().get(i).getStatus();
+			}else if(j == 4) {
+				data[i][j]= String.valueOf(maincontroller.getAirplaneList().get(i).getLocationCity());
+			}else if(j == 5) {
+				data[i][j]= String.valueOf(maincontroller.getAirplaneList().get(i).getDepartTime());
+			}else if(j == 6) {				
+				data[i][j]= String.valueOf(maincontroller.getAirplaneList().get(i).getDestinationCity());
+			}else if(j == 7) {
+				data[i][j]= String.valueOf(maincontroller.getAirplaneList().get(i).getArrivalTime());
 			}
-		));
-		tblFlights.getColumnModel().getColumn(5).setPreferredWidth(96);
-		tblFlights.getColumnModel().getColumn(6).setPreferredWidth(94);
+			}	
+		}
+		
+		String coloumns [] = {"Airline Name", "Terminal", "Gate", "Flight Status", "Departure City", "Departure Time", "Destination City", "Destination Time"};
+
+
+		tblFlights = new JTable(data, coloumns);
+		tblFlights.setModel(new DefaultTableModel(data, coloumns));
+		tblFlights.getColumnModel().getColumn(0).setPreferredWidth(92);
+		tblFlights.getColumnModel().getColumn(1).setPreferredWidth(65);
+		tblFlights.getColumnModel().getColumn(2).setPreferredWidth(44);
+		tblFlights.getColumnModel().getColumn(3).setPreferredWidth(83);
+		tblFlights.getColumnModel().getColumn(4).setPreferredWidth(92);
+		tblFlights.getColumnModel().getColumn(5).setPreferredWidth(124);
+		tblFlights.getColumnModel().getColumn(6).setPreferredWidth(98);
+		tblFlights.getColumnModel().getColumn(7).setPreferredWidth(106);
 		tblFlights.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		scrollPane.setViewportView(tblFlights);
 		
@@ -83,12 +108,12 @@ public class ViewFlightInfo extends JFrame {
 				dispose();
 			}
 		});
-		button.setBounds(568, 28, 119, 35);
+		button.setBounds(544, 28, 143, 35);
 		contentPane.add(button);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.controlHighlight);
-		panel.setBounds(10, 333, 677, 172);
+		panel.setBounds(10, 333, 730, 172);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -98,12 +123,17 @@ public class ViewFlightInfo extends JFrame {
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		
 		textField = new JTextField();
-		textField.setBounds(119, 302, 96, 20);
+		textField.setBounds(119, 302, 130, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search ");
-		btnSearch.setBounds(225, 303, 89, 23);
+		btnSearch.setBounds(261, 302, 130, 23);
 		contentPane.add(btnSearch);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\James Maye\\Downloads\\Airplane Aircraft Wallpaper 19114 Wallpaper High Resolution.png"));
+		lblNewLabel_2.setBounds(0, 0, 744, 643);
+		contentPane.add(lblNewLabel_2);
 	}
 }

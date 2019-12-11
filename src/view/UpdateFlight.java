@@ -29,25 +29,15 @@ public class UpdateFlight extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UpdateFlight frame = new UpdateFlight();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
 	public UpdateFlight() {
+		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 624, 532);
+		setBounds(100, 100, 720, 532);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,24 +49,26 @@ public class UpdateFlight extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(22, 61, 577, 188);
+		scrollPane.setBounds(22, 61, 668, 188);
 		contentPane.add(scrollPane);
 		
 		tblClientFlight = new JTable();
 		tblClientFlight.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
+				{null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"ClientID", "Departure", "Arrival", "DepartureDate", "ArrivalDate"
+				"ClientID", "Airline", "Seat", "DepartureDate", "ArrivalDate", "Gate", "Terminal"
 			}
 		));
-		tblClientFlight.getColumnModel().getColumn(3).setPreferredWidth(98);
+		tblClientFlight.getColumnModel().getColumn(3).setPreferredWidth(118);
+		tblClientFlight.getColumnModel().getColumn(4).setPreferredWidth(94);
+		tblClientFlight.getColumnModel().getColumn(6).setPreferredWidth(83);
 		scrollPane.setViewportView(tblClientFlight);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.controlHighlight);
-		panel.setBounds(22, 310, 577, 171);
+		panel.setBounds(22, 310, 668, 171);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
