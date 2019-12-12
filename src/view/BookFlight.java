@@ -174,7 +174,7 @@ public class BookFlight extends JFrame {
 			Location local = maincontroller.getLocationList().get(i);
 			cboReturning.addItem(local.getCountry() + ", " + local.getCity() + ", " + local.getAcro());
 		}
-		cboReturning.setBounds(92, 28, 176, 22);
+		cboReturning.setBounds(92, 28, 204, 22);
 		Returning.add(cboReturning);
 		
 		JComboBox<String> cboDestination = new JComboBox<String>();
@@ -182,7 +182,7 @@ public class BookFlight extends JFrame {
 			Location local = maincontroller.getLocationList().get(i);
 			cboDestination.addItem(local.getCountry() + ", " + local.getCity() + ", " + local.getAcro());
 		}		
-		cboDestination.setBounds(92, 74, 176, 22);
+		cboDestination.setBounds(92, 74, 204, 22);
 		Returning.add(cboDestination);
 		
 		JLabel lblNewLabel_5 = new JLabel("New label");
@@ -361,7 +361,7 @@ public class BookFlight extends JFrame {
 		label_11.setBounds(24, 245, 96, 14);
 		MultiCity.add(label_11);
 		
-		JComboBox comboBox_7 = new JComboBox();
+		JComboBox<String> comboBox_7 = new JComboBox<String>();
 		comboBox_7.setModel(new DefaultComboBoxModel(new String[] {"Economy", "Preminium Economy", "Business Class", "First Class"}));
 		comboBox_7.setBounds(130, 242, 96, 22);
 		MultiCity.add(comboBox_7);

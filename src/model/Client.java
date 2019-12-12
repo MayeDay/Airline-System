@@ -45,6 +45,28 @@ public class Client extends Person {
 
 	}
 	
+	public Client(String firstname, String middlename, String lastname, Date birthdate, String address, String email, String contactnumber
+			,String username, String password, String status, String airline, int plane_id, String gender, String airplanename, Time departureTime, Time arrivalTime
+			, Date departureDate, String gate, String terminal, String location, String locationCity, String destination, String destinationCity) {
+		super(firstname, middlename, lastname, birthdate, address, email, contactnumber);
+		
+		this.airline = airline;
+		this.plane_id = plane_id;
+		this.gender = gender;
+		this.airplanename = airplanename;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		this.departureDate = departureDate;
+		this.gate = gate;
+		this.terminal = terminal;
+		this.location = location;
+		this.locationCity = locationCity;
+		this.destination = destination;
+		this.destinationCity = destinationCity;
+
+	}
+	
+	
 	
 
 	public int getId() {

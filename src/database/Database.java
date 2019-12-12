@@ -18,6 +18,7 @@ public class Database implements Runnable{
 
 	private Connection connection = null;
 	private CallableStatement cs = null;
+	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 	private String url;
 	private String username;
@@ -162,6 +163,28 @@ public class Database implements Runnable{
 			if(c.getId() == clientId) 
 				this.client = c;
 		return this.client;
+	}
+	
+	public LinkedList<String> getAirlineList(){
+		
+		LinkedList<String> temp = new LinkedList<String>();
+		
+		try {
+			ps = connection.prepareStatement("select airline_table.airline_name from airline_table");
+
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				temp.add(rs.getString(1));
+			}
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return temp;
 	}
 
 	public void run() {

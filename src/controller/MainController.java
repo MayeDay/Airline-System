@@ -50,4 +50,8 @@ public class MainController {
 	public LinkedList<Location> getLocationList(){
 		return database.getLocationList();
 	}
+	public LinkedList<String> getAirlineList(){
+		return database.getAirlineList();
+	}
+	
 }

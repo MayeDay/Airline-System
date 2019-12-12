@@ -421,6 +421,7 @@ call getMerchants();
 call employeeLogin();
 call getLocation();
 select * from airplane_table;
+select * from airline_table;
 select * from all_location_table;
 select * from flight_status_table;
 select * from userstatus_table;

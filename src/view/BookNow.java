@@ -16,6 +16,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class BookNow extends JFrame {
 
@@ -35,7 +36,7 @@ public class BookNow extends JFrame {
 	public BookNow() {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 765, 472);
+		setBounds(100, 100, 801, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -57,6 +58,7 @@ public class BookNow extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel = new JLabel("Available Flights");
+		lblNewLabel.setBackground(new Color(0, 0, 153));
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		lblNewLabel.setBounds(10, 11, 193, 24);
 		contentPane.add(lblNewLabel);
@@ -111,5 +113,11 @@ public class BookNow extends JFrame {
 		textField_1.setColumns(10);
 		textField_1.setBounds(115, 395, 124, 20);
 		contentPane.add(textField_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBackground(new Color(0, 0, 153));
+		lblNewLabel_2.setForeground(new Color(0, 0, 153));
+		lblNewLabel_2.setBounds(0, 11, 771, 404);
+		contentPane.add(lblNewLabel_2);
 	}
 }

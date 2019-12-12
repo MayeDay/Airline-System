@@ -40,7 +40,7 @@ public class Admin extends JFrame {
 	 */
 	public Admin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 662, 413);
+		setBounds(100, 100, 662, 468);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,11 +63,6 @@ public class Admin extends JFrame {
 		panel.add(btnNewButton);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JButton btnCancelFlight = new JButton("Cancel Flight");
-		btnCancelFlight.setBounds(27, 140, 121, 37);
-		panel.add(btnCancelFlight);
-		btnCancelFlight.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
 		JLabel lblNewLabel = new JLabel("Administrator HomePage");
 		lblNewLabel.setBounds(27, 51, 257, 26);
 		panel.add(lblNewLabel);
@@ -84,6 +79,19 @@ public class Admin extends JFrame {
 		btnView.setBounds(26, 245, 121, 37);
 		panel.add(btnView);
 		btnView.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JButton btnAddMerchant = new JButton("Add Merchant");
+		btnAddMerchant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Merchant mer = new Merchant();
+				mer.setVisible(true);
+				mer.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		btnAddMerchant.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnAddMerchant.setBounds(26, 140, 121, 37);
+		panel.add(btnAddMerchant);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(12, 43, 620, 323);
@@ -106,16 +114,6 @@ public class Admin extends JFrame {
 				Flight.setVisible(true);
 				Flight.setResizable(false);
 				Flight.setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		btnCancelFlight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				CancelFlight cancel = new CancelFlight();
-				cancel.setLocationRelativeTo(null);
-				cancel.setVisible(true);
-				cancel.setResizable(false);
 				dispose();
 			}
 		});
